@@ -6,9 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
 
-    @Test
-    public void shouldAddTwoPositiveNumbers() {
-
+    @Test public void shouldAddTwoPositiveNumbers() {
         // arrange
         Integer expected = 3;
         Calculator calculator = new Calculator();
@@ -18,5 +16,14 @@ public class CalculatorTest {
 
         // assert
         assertEquals(expected, sum);
+    }
+
+    @Test public void shouldMultiplyTwoPositiveNumbers() {
+        Integer expected = 15;
+        Calculator calculator = new Calculator();
+
+        Integer product = calculator.times(3, 5);
+
+        assertEquals(expected, product);
     }
 }
