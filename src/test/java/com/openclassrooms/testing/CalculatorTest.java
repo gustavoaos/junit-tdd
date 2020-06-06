@@ -7,6 +7,7 @@ import java.time.Instant;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
@@ -72,4 +73,12 @@ public class CalculatorTest {
             calculator.cos(0.8);
         });
     }
+
+    @Test
+    public void slowCalculationShouldNotTakesMoreThan3Milliseconds() {
+        assertTimeout(Duration.ofMillis(3000), () -> {
+            calculator.slowCalculation(2000);
+        });
+    }
+
 }
