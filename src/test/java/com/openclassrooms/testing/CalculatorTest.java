@@ -7,6 +7,7 @@ import java.time.Instant;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
 
@@ -65,4 +66,10 @@ public class CalculatorTest {
         assertThat(product, is(expected));
     }
 
+    @Test
+    public void cosTrigonometricExpressionShouldNotBeSupported() throws UnsupportedOperationException {
+        assertThrows(UnsupportedOperationException.class, () -> {
+            calculator.cos(0.8);
+        });
+    }
 }
