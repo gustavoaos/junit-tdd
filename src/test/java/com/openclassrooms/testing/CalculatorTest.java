@@ -2,6 +2,8 @@ package com.openclassrooms.testing;
 
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
@@ -24,6 +26,7 @@ public class CalculatorTest {
 
         Integer product = calculator.times(3, 5);
 
-        assertEquals(expected, product);
+        // assertEquals(expected, product);
+        assertThat(product, is(expected));
     }
 }
