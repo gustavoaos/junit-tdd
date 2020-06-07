@@ -68,14 +68,14 @@ public class CalculatorTest {
     }
 
     @Test
-    public void cosTrigonometricExpressionShouldNotBeSupported() throws UnsupportedOperationException {
+    public void shouldThrowExceptionWhenForUnsupportedOperationCos() throws UnsupportedOperationException {
         assertThrows(UnsupportedOperationException.class, () -> {
             calculatorUnderTest.cos(0.8);
         });
     }
 
     @Test
-    public void slowCalculationShouldNotTakesMoreThan3Milliseconds() {
+    public void shouldFailIfOperationTakesMoreThan3Milliseconds() {
         assertTimeout(Duration.ofMillis(3000), () -> {
             calculatorUnderTest.slowCalculation(2000);
         });
