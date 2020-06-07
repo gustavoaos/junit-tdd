@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CalculatorTest {
 
     private static Instant startedAt;
-    private Calculator calculator;
+    private Calculator calculatorUnderTest;
 
     @BeforeAll
     public static void beforeClass() {
@@ -32,14 +32,14 @@ public class CalculatorTest {
 
     @BeforeEach
     public void setUp() {
-        calculator = new Calculator();
+        calculatorUnderTest = new Calculator();
 
         System.out.println("Called BEFORE EACH test - " + Instant.now());
     }
 
     @AfterEach
     public void tearDown() {
-        calculator = null;
+        calculatorUnderTest = null;
 
         System.out.println("Called AFTER EACH test - " + Instant.now());
     }
@@ -50,7 +50,7 @@ public class CalculatorTest {
         Integer expected = 3;
 
         // act
-        Integer sum = calculator.add(1, 2);
+        Integer sum = calculatorUnderTest.add(1, 2);
 
         // assert
         // assertEquals(expected, sum);
@@ -61,7 +61,7 @@ public class CalculatorTest {
     public void shouldMultiplyTwoPositiveNumbers() {
         Integer expected = 15;
 
-        Integer product = calculator.times(3, 5);
+        Integer product = calculatorUnderTest.times(3, 5);
 
         // assertEquals(expected, product);
         assertThat(product, is(expected));
@@ -70,14 +70,14 @@ public class CalculatorTest {
     @Test
     public void cosTrigonometricExpressionShouldNotBeSupported() throws UnsupportedOperationException {
         assertThrows(UnsupportedOperationException.class, () -> {
-            calculator.cos(0.8);
+            calculatorUnderTest.cos(0.8);
         });
     }
 
     @Test
     public void slowCalculationShouldNotTakesMoreThan3Milliseconds() {
         assertTimeout(Duration.ofMillis(3000), () -> {
-            calculator.slowCalculation(2000);
+            calculatorUnderTest.slowCalculation(2000);
         });
     }
 
