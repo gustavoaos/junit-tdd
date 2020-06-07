@@ -21,10 +21,21 @@ public class ConversionCalculatorTest {
 
     @Test
     public void shouldConvertMilesToKilometersWhenMilesIsPositive() {
-        double miles = 100.0;
-        double kilometers = 160.9;
+        double miles = 1.0;
+        double kilometers = 1.609;
+
         double result = conversionCalculatorUnderTest.milesToKilometers(miles);
 
         assertThat(result, is(kilometers));
+    }
+
+    @Test
+    public void shouldConvertInchesToCentimetersWhenInchesIsPositive() {
+        double inches = 1.0;
+        double centimeters = 2.54;
+
+        double result = conversionCalculatorUnderTest.inchesToCentimeters(inches);
+
+        assertThat(result, is(centimeters));
     }
 }
